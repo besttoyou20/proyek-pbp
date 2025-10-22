@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+        <title>Project PBP</title>
+        <link rel="stylesheet" href="img/favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+         <style>
+            .bg{
+                background-color: rgb(1, 22, 44);
+            }
+            .color{
+                color: orange;
+            }
+            .btn-color{
+                background-color: orange;
+                
+            }
+            .py-5{
+                padding-top: 3.5rem !important;
+                padding-bottom: 3.5rem !important;
+            }
+            .bg-section{
+                background-color: rgb(37, 69, 103) ;
+            }
+          .btn-outline-success {
+            color: orange;
+            border-color: orange;
+           }
+           .btn-outline-success:hover,
+           .btn-outline-success:focus {
+               color: #fff;
+               background-color: orange;
+               border-color: orange;
+               box-shadow: 0 0 0 0.25rem rgba(255,165,0,0.25);
+           }
+           .btn-outline-success:active {
+               color: #fff;
+               background-color: #cc8400;
+               border-color: #cc8400;
+           }
+           .about-video {
+                max-width: 600px !important;
+                width: 100% !important;
+                height: auto !important;
+                display: block;
+                object-fit: cover;
+            }
+            .no-outline {
+                border: 0 !important;
+                box-shadow: none !important;
+                background: transparent !important;
+            }
+             @media (max-width: 767px) {
+            .about-video { width: 100% !important; max-width: 100% !important; }
+            }
+            .product-card {
+                padding: 1rem;           /* lebih banyak ruang */
+                border-radius: 12px;
+                box-shadow: 0 6px 18px rgba(3, 3, 3, 0.06);
+                min-height: 320px;      /* pastikan kartunya agak tinggi */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                border-color: #f5f4f4;
+            }
+            .product-card img {
+                width: 100%;
+                height: 200px;
+                border-radius: 10px;
+            }
+            .price {
+                font-weight: bold;
+                color: #e74c3c;
+                font-size: 1.1rem;
+            }
+            .old-price {
+                text-decoration: line-through;
+                color: gray;
+                font-size: 0.9rem;
+            }
+            .discount {
+                color: #16a085;
+                font-size: 0.9rem;
+            }
+            .quantity-control {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 5px;
+            }
+            .quantity-control button {
+                border: none;
+                background-color: orange;
+                color: white;
+                width: 30px;
+                height: 30px;
+                border-radius: 5px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            .quantity-control span {
+                width: 30px;
+                text-align: center;
+                display: inline-block;
+                font-weight: bold;
+            }
+            .navbar-nav .nav-link.active {
+                color: orange !important;
+                border-bottom: 2px solid orange;
+                transition: 0.3s;
+            }
+            .navbar-dark .navbar-nav .nav-link {
+                color: white !important;
+                border-radius: .5rem;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+            .navbar-dark .navbar-nav .nav-link:hover,
+            .navbar-dark .navbar-nav .nav-link:focus {
+                background-color: orange;
+                color: white !important;
+            }
+
+            .hr{
+                border-top: 4px solid orange;
+                width: 80px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 0;
+                margin-bottom: 5px;
+            }
+            .review-card {
+                border: none;
+                border-radius: 15px;
+                min-height: 200px;
+                display: flex;
+                background: rgb(250, 204, 118);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                transition: transform .3s ease, box-shadow .3s ease;
+            }
+            .review-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            }
+
+            #review img {
+                max-width: 350px;
+                width: 100%;
+                height: auto;
+            }
+
+            @media (max-width: 992px) {
+                #review .col-lg-5 {
+                margin-bottom: 30px;
+                }
+            }
+            footer a.text-white:hover { color: orange; text-decoration: none; }
+            footer .btn-outline-light { border-color: rgba(255,255,255,0.18); color: #fff; }
+            footer .btn-outline-light:hover { background-color: orange; border-color: orange; color: #fff; }
+            @media (max-width: 575px) {
+                footer .col-md-2, footer .col-md-3, footer .col-md-4 { text-align: left; }
+            }
+            .social-list { display: flex; flex-direction: column; gap: .5rem; align-items: flex-start; }
+            .social-item { display: flex; align-items: center; gap: .5rem; }
+            .social-item .handle { color: #fff; margin: 0; font-size: .95rem; }
+            @media (max-width: 575px) {
+            .social-list { gap: .4rem; }
+            }
+
+        </style>
+    </head>
+
+    <body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="70" tabindex="0">
+        <div class="container-fluid position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-dark bg px-4 px-lg-5 py-3 py-lg-4 sticky-top">
+                <a href="#" class="navbar-brand p-0 mb-0 fs-3">
+                    <h1 class="text m-0 color"><i class="fa-solid fa-cart-shopping me-2" style="color: orange;"></i><b>Get It!</b></h1>
+                    
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="navbar-nav ms-auto py-0 pe-4">
+                        <a class="nav-item nav-link active" href="#home">Home</a>
+                        <a class="nav-item nav-link active" href="#about">About Us</a>
+                        <a class="nav-item nav-link active" href="#product">Product</a>
+                        <a class="nav-item nav-link active" href="#review">Review</a>
+                    </div>
+                    <form class="d-flex" role="search" onsubmit="return false;">
+                        <input id="searchInput" class="form-control me-1" type="search" placeholder="Search" aria-label="Search"/>
+                        <button id="searchBtn" class="btn btn-outline-success" type="button">Search</button>
+                    </form>
+                </div>
+            </nav>
+            <div class="container-fluid py-5 bg hero-header mb-2" id="home">
+                <div class="container my-6 py-5">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h1 class="display-3 text-white mb-4 animated slideInLeft"><span class="color">Get It!</span> Your Favorite Online Shop</h1>
+                            <p class="text-white animated slideInLeft mb-4 pb-2">Get It! is an online shopping website that provides various products ranging from electronics, fashion, to daily necessities with affordable prices and reliable service.</p>
+                            <a href="#product" class="btn btn-color py-sm-3 px-sm-5 slideInLeft"><b>Get Shopping</b></a>
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-end overflow-hidden">
+                            <img src="img/—Pngtree—girl shopping in clothes store_7299400.png" width="800px" class="img-fluid" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="container-xxl py-5" id="about">
+                <div class="container-fluid px-5">
+                    <div class="row g-4">
+                        <h3 class=" bg text-center color py-3 mt-0" width="300px"><b>About Us</b></h3>
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4">
+                                    <i class="fa fa-3x fa-shopping-cart color  mb-4"></i>
+                                    <h5>Easy Shopping</h5>
+                                    <p>Experience a seamless and convenient shopping journey with our user-friendly platform.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4">
+                                    <i class="fa fa-3x fa-shield-alt color mb-4"></i>
+                                    <h5>Secure Payment</h5>
+                                    <p>Your transactions are protected with top-notch security measures for a worry-free experience.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4">
+                                    <i class="fa fa-3x fa-headset color mb-4"></i>
+                                    <h5>24/7 Support</h5>
+                                    <p>Our dedicated support team is available around the clock to assist you with any inquiries.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4">
+                                    <i class="fa fa-3x fa-clipboard color mb-4"></i>
+                                    <h5>Complete Collection</h5>
+                                    <p>Everything you need for every lifestyle, all in one place </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-0 w-100 no-outline" style="max-width: none;">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-12 col-md-auto d-flex justify-content-center p-3">
+                               <video src="img/istockphoto-2159822155-640_adpp_is.mp4" loop muted autoplay class="about-video rounded" ></video>
+                            </div>
+                                <div class="col">
+                                    <div class="card-body ">
+                                        <h4 class="card-title"><b>Why Choose Us?</b></h4>
+                                        <p class="card-text"><span class="color">Get It!</span> is an online shopping website that provides various products ranging from electronics, fashion, to daily necessities with affordable prices and reliable service.</p>
+                                        <a href="#about" class="btn btn-color py-sm-1 px-sm-3 slideInLeft"><b>Learn more</b></a>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-xxl py-5" id="product">
+                <div class="container-fluid px-5 text-center">
+                    <div class="row g-4">
+                        <h3 class=" bg text-center color py-3 mt-0" width="300px"><b>Product</b></h3>
+                        <div>
+                            <h4>Clothes </h4>
+                            <hr class="color hr" />
+                        </div>  
+                        <div class="col-lg-3 col-sm-6 mt-5">
+                            <div class="card product-card p-2 h-100 d-flex">
+                                <img src="img/img1.jpeg" alt="blouse">
+                                <div class="card-body p-2 flex-fill d-flex flex-column justify-content-between">
+                                    <p class="small mb-1">Blouse Wanita Atasan Muslimah Korean Style Ukuran Minu</p>
+                                    <div class="price">Rp50.500</div>
+                                    <div class="old-price">Rp52.000</div>
+                                    <div class="discount">-7%</div>
+
+                                    <div class="quantity-control mt-2">
+                                        <button class="btn-minus">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="btn-plus">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-color mt-2 w-100 add-to-cart" data-name="SGM Eksplor 1+" data-price="82500">
+                                        <i class="fa fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6 mt-5">
+                            <div class="card product-card p-2 h-100 d-flex">
+                                <img src="img/img2.jpeg" alt="knit">
+                                <div class="card-body p-2 flex-fill d-flex flex-column justify-content-between">
+                                    <p class="small mb-1">Basic Knit Long Sleeve Atasan Wanita Korean Top Summer</p>
+                                    <div class="price">Rp37.900</div>
+                                    <div class="old-price">Rp89.000</div>
+                                    <div class="discount">-7%</div>
+
+                                    <div class="quantity-control mt-2">
+                                        <button class="btn-minus">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="btn-plus">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-color mt-2 w-100 add-to-cart" data-name="SGM Eksplor 1+" data-price="82500">
+                                        <i class="fa fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6 mt-5">
+                            <div class="card product-card p-2 h-100 d-flex">
+                                <img src="img/img3.jpeg" alt="kemeja">
+                                <div class="card-body p-2 flex-fill d-flex flex-column justify-content-between">
+                                    <p class="small mb-1">Kemeja Fit Body Wanita</p>
+                                    <div class="price">Rp35.500</div>
+                                    <div class="old-price">Rp80.000</div>
+                                    <div class="discount">-7%</div>
+
+                                    <div class="quantity-control mt-2">
+                                        <button class="btn-minus">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="btn-plus">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-color mt-2 w-100 add-to-cart" data-name="SGM Eksplor 1+" data-price="82500">
+                                        <i class="fa fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6 mt-5">
+                            <div class="card product-card p-2 h-100 d-flex">
+                                <img src="img/img4.jpeg" alt="Sweater">
+                                <div class="card-body p-2 flex-fill d-flex flex-column justify-content-between">
+                                    <p class="small mb-1">Sweater Garis Garis Rajut Oversize</p>
+                                    <div class="price">Rp45.500</div>
+                                    <div class="old-price">Rp89.000</div>
+                                    <div class="discount">-7%</div>
+
+                                    <div class="quantity-control mt-2">
+                                        <button class="btn-minus">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="btn-plus">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-color mt-2 w-100 add-to-cart" data-name="SGM Eksplor 1+" data-price="82500">
+                                        <i class="fa fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4>Skincare</h4>
+                            <hr class="color hr" />
+                        </div> 
+
+                        <div class="col-lg-3 col-sm-6 mt-5">
+                            <div class="card product-card p-2 h-100 d-flex">
+                                <img src="img/img5.jpg" alt="glad2glow">
+                                <div class="card-body p-2 flex-fill d-flex flex-column justify-content-between">
+                                    <p class="small mb-1">Glad2Glow Moisturizer</p>
+                                    <div class="price">Rp82.500</div>
+                                    <div class="old-price">Rp89.000</div>
+                                    <div class="discount">-7%</div>
+
+                                    <div class="quantity-control mt-2">
+                                        <button class="btn-minus">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="btn-plus">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-color mt-2 w-100 add-to-cart" data-name="SGM Eksplor 1+" data-price="82500">
+                                        <i class="fa fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mt-5">
+                            <div class="card product-card p-2 h-100 d-flex">
+                                <img src="img/img6.png" alt="whitelab">
+                                <div class="card-body p-2 flex-fill d-flex flex-column justify-content-between">
+                                    <p class="small mb-1">Whitelab Cera-Mug Moisturizer Gel untuk Skin Barrier</p>
+                                    <div class="price">Rp65.500</div>
+                                    <div class="old-price">Rp100.000</div>
+                                    <div class="discount">-7%</div>
+
+                                    <div class="quantity-control mt-2">
+                                        <button class="btn-minus">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="btn-plus">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-color mt-2 w-100 add-to-cart" data-name="SGM Eksplor 1+" data-price="82500">
+                                        <i class="fa fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mt-5">
+                            <div class="card product-card p-2 h-100 d-flex">
+                                <img src="img/img7.jpeg" alt="elformula">
+                                <div class="card-body p-2 flex-fill d-flex flex-column justify-content-between">
+                                    <p class="small mb-1">ElFORMULA Intensive Peeling Solution for Exfoliating</p>
+                                    <div class="price">Rp105.500</div>
+                                    <div class="old-price">Rp130.000</div>
+                                    <div class="discount">-7%</div>
+
+                                    <div class="quantity-control mt-2">
+                                        <button class="btn-minus">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="btn-plus">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-color mt-2 w-100 add-to-cart" data-name="SGM Eksplor 1+" data-price="82500">
+                                        <i class="fa fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mt-5">
+                            <div class="card product-card p-2 h-100 d-flex">
+                                <img src="img/img8.png" alt="wardah">
+                                <div class="card-body p-2 flex-fill d-flex flex-column justify-content-between">
+                                    <p class="small mb-1">Wardah Moisturizer Vitamin C + Adenosine</p>
+                                    <div class="price">Rp102.500</div>
+                                    <div class="old-price">Rp106.000</div>
+                                    <div class="discount">-7%</div>
+
+                                    <div class="quantity-control mt-2">
+                                        <button class="btn-minus">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="btn-plus">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-color mt-2 w-100 add-to-cart" data-name="SGM Eksplor 1+" data-price="82500">
+                                        <i class="fa fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4>Electronics</h4>
+                            <hr class="color hr" />
+                        </div> 
+
+                        <div class="col-lg-3 col-sm-6 mt-5">
+                            <div class="card product-card p-2 h-100 d-flex">
+                                <img src="img/img9.jpeg" alt="rice Cooker">
+                                <div class="card-body p-2 flex-fill d-flex flex-column justify-content-between">
+                                    <p class="small mb-1">Rice Cooker Elektrik Penanak Nasi Multifungsi 0.6 L</p>
+                                    <div class="price">Rp134.500</div>
+                                    <div class="old-price">Rp200.000</div>
+                                    <div class="discount">-7%</div>
+
+                                    <div class="quantity-control mt-2">
+                                        <button class="btn-minus">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="btn-plus">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-color mt-2 w-100 add-to-cart" data-name="SGM Eksplor 1+" data-price="82500">
+                                        <i class="fa fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mt-5">
+                            <div class="card product-card p-2 h-100 d-flex">
+                                <img src="img/img10.jpeg" alt="kipas">
+                                <div class="card-body p-2 flex-fill d-flex flex-column justify-content-between">
+                                    <p class="small mb-1">Kipas Mini AC Portable Air Cooler Pendingin Ruangan</p>
+                                    <div class="price">Rp80.500</div>
+                                    <div class="old-price">Rp100.000</div>
+                                    <div class="discount">-7%</div>
+
+                                    <div class="quantity-control mt-2">
+                                        <button class="btn-minus">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="btn-plus">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-color mt-2 w-100 add-to-cart" data-name="SGM Eksplor 1+" data-price="82500">
+                                        <i class="fa fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mt-5">
+                            <div class="card product-card p-2 h-100 d-flex">
+                                <img src="img/img11.jpeg" alt="robot vacuum">
+                                <div class="card-body p-2 flex-fill d-flex flex-column justify-content-between">
+                                    <p class="small mb-1">Robot Vacuum Cleaner 5 in 1 Portable Penyedot Debu Rumah</p>
+                                    <div class="price">Rp160.500</div>
+                                    <div class="old-price">Rp200.000</div>
+                                    <div class="discount">-7%</div>
+
+                                    <div class="quantity-control mt-2">
+                                        <button class="btn-minus">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="btn-plus">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-color mt-2 w-100 add-to-cart" data-name="SGM Eksplor 1+" data-price="82500">
+                                        <i class="fa fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mt-5">
+                            <div class="card product-card p-2 h-100 d-flex">
+                                <img src="img/img12.jpeg" alt="kulkas">
+                                <div class="card-body p-2 flex-fill d-flex flex-column justify-content-between">
+                                    <p class="small mb-1">Hisanse Refrigerator Mini Bar Kapasitas 42L Warna Silver </p>
+                                    <div class="price">Rp988.500</div>
+                                    <div class="old-price">Rp1.000.000</div>
+                                    <div class="discount">-7%</div>
+
+                                    <div class="quantity-control mt-2">
+                                        <button class="btn-minus">−</button>
+                                        <span class="quantity">1</span>
+                                        <button class="btn-plus">+</button>
+                                    </div>
+                                    <button class="btn btn-sm btn-color mt-2 w-100 add-to-cart" data-name="SGM Eksplor 1+" data-price="82500">
+                                        <i class="fa fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-xxl py-5" id="review">
+                <div class="container-fluid px-5 text-center">
+                    <div class="row g-4">
+                        <h3 class=" bg text-center color py-3 mt-0" width="300px"><b>Customer Review</b></h3>
+                        <div class="row align-items-center mt-4">
+                            <div class="col-lg-5 text-center mt-0 mb-2 mb-lg-0">
+                                <img src="img/—Pngtree—customer reviews concept illustration with_8644421.png" alt=""style="max-width: 450px;">
+                            </div>
+                            <div class="col-lg-7 col-md-12 text-start">
+                                <div class="row g-4">
+                                    <div class="col-sm-6 d-flex">
+                                        <div class="card review-card p-3 flex-fill w-100">
+                                            <div class="mb-1">
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                            </div>
+                                            <h5 class="mb-0">Chris Evan</h5>
+                                            <p class="mt-0 small">Customer</p>
+                                            <p class="mt-0 mb-1">Baru coba Get It! dan ternyata nyaman banget dipakainya. Tampilan simpel, transaksi juga cepat. Bakal sering belanja di sini nih!</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 d-flex">
+                                        <div class="card review-card p-3 flex-fill w-100">
+                                            <div class="mb-1">
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                            </div>
+                                            <h5 class="mb-0">Cha Eunwoo</h5>
+                                            <p class="mt-0 small">Customer</p>
+                                            <p class="mt-0 mb-1">Produk banyak, harga bersaing, pengiriman juga cepet. Pokoknya Get It! mantap banget buat belanja online!</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 d-flex">
+                                        <div class="card review-card p-3 flex-fill w-100">
+                                            <div class="mb-1">
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                            </div>
+                                            <h5 class="mb-0">Henry Cavill</h5>
+                                            <p class="mt-0 small">Customer</p>
+                                            <p class="mt-0 mb-1">Awalnya coba-coba, eh malah ketagihan belanja di Get It! Barangnya sesuai, pengiriman cepat, CS-nya juga ramah.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 d-flex">
+                                        <div class="card review-card p-3 flex-fill w-100">
+                                            <div class="mb-1">
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                                <i class=" fas fa-star"></i>
+                                            </div>
+                                            <h5 class="mb-0">Kim Young Kwang</h5>
+                                            <p class="mt-0 small">Customer</p>
+                                            <p class="mt-0 mb-1">Cepat, aman, dan terpercaya!</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                    </div> 
+                </div>
+            </div>
+
+    <footer class="bg text-white pt-5 pb-4">
+        <div class="container-fluid px-5">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5 class="color"><b>Get It!</b></h5>
+                    <p>Get it! We offer a variety of online shopping needs at affordable prices and fast service.</p>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <h6 class="color">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="#about" class="text-white text-decoration-none">About Us</a></li>
+                        <li><a href="#product" class="text-white text-decoration-none">Product</a></li>
+                        <li><a href="#review" class="text-white text-decoration-none">Review</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <h6 class="color">Contact</h6>
+                    <p class="mb-1">Email: <a href="mailto:info@getit.com" class="text-white">info@getit.com</a></p>
+                    <p class="mb-1">Phone: <a href="tel:+6281234567890" class="text-white">+62 812-3456-7890</a></p>
+                    <p class="mb-0">Address: Jakarta, Indonesia</p>
+                </div>
+                    
+               <div class="col-md-2">
+                   <h6 class="color">Follow</h6>
+                <div class="social-list">
+                     <div class="social-item">
+                        <a href="#" class="btn btn-outline-light btn-sm" aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <span class="handle">@getit</span>
+                    </div>                     
+                    <div class="social-item">
+                       <a href="#" class="btn btn-outline-light btn-sm" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+                         <span class="handle">@getit</span>
+                    </div>
+                    <div class="social-item">
+                         <a href="#" class="btn btn-outline-light btn-sm" aria-label="twitter"><i class="fab fa-twitter"></i></a>
+                         <span class="handle">@getit</span>                     
+                    </div>
+                </div>
+            </div>
+            
+
+            <hr class="text-white-50" />
+
+            <div class="row">
+                <div class="col-12 text-center small">
+                    &copy; 2025 Get It! All rights reserved.
+                </div>
+            </div>
+        </div>
+
+    </footer>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            let totalItem = 0;
+            let totalHarga= 0;
+            document.querySelectorAll('.product-card').forEach(card => {
+                const quantityDisplay = card.querySelector('.quantity');
+                const plusBtn = card.querySelector('.btn-plus');
+                const minusBtn = card.querySelector('.btn-minus');
+                const priceText = card.querySelector('.price').textContent.replace('Rp', '').replace('.', '');
+                const price = parseInt(priceText);
+                let quantity = 1;
+
+                plusBtn.addEventListener('click', () => {
+                    quantity++;
+                    quantityDisplay.textContent = quantity;
+                });
+
+                minusBtn.addEventListener('click', () => {
+                    if (quantity > 1) {
+                        quantity--;
+                        quantityDisplay.textContent = quantity;
+                    }
+                });
+
+                card.querySelector('.add-to-cart').addEventListener('click', () => {
+                    const productName = card.querySelector('p').textContent;
+                    const totalPerProduk = price * quantity;
+
+                    totalItem += quantity;
+                    totalHarga += totalPerProduk;
+                    alert(`🛒 ${productName}
+                            Jumlah: ${quantity}
+                            Harga Satuan: Rp${price.toLocaleString('id-ID')}
+                            Total Produk Ini: Rp${totalPerProduk.toLocaleString('id-ID')}
+                            =============================
+                            Total Item di Keranjang: ${totalItem}
+                            Total Harga Semua: Rp${totalHarga.toLocaleString('id-ID')}`);
+                });
+            });
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+
+            function doSearch() {
+                const q = (searchInput.value || '').trim().toLowerCase();
+                document.querySelectorAll('.product-card').forEach(card => {
+                    const titleEl = card.querySelector('.card-body p') || card.querySelector('p');
+                    const title = (titleEl?.textContent || '').toLowerCase();
+                    const col = card.closest('[class*="col-"]') || card.parentElement;
+                    if (!q || title.includes(q)) {
+                        col.style.display = '';
+                    } else {
+                        col.style.display = 'none';
+                    }
+                });
+                if (q) {
+                    const productsSection = document.getElementById('product');
+                    if (productsSection) productsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            searchBtn.addEventListener('click', doSearch);
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') { e.preventDefault(); doSearch(); }
+            });
+        </script>
+    </body>
+</html>
