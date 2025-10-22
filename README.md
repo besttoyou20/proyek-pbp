@@ -16,5 +16,5 @@ Menampilkan beberapa page dengan scrollSpy dari bootstrap yang berisi:
 4. Review yang menampilkan review dengan teradapat gambarnya.
    Terdapat beberapa fungsionalitas menggunakan Java Script yaitu ketika menggunakan add to cart, plus dan minus button yang nanti apabila diklik akan muncul di alert dengan keterangan bahwa dia sudah ditotal semua barang yang dimasukkan keranjang sesuai dengan harganya, dan ketika menggunakan Search untuk mencari produk yang ingin dicari.
 
-![alt text](https://github.com/besttoyou20/proyek-pbp/blob/main/Tampilan%20Website/screencapture-127-0-0-1-5500-index-html-2025-10-22-12_57_30%20(1).png)
+![alt text](https://github.com/besttoyou20/proyek-pbp/blob/main/Tampilan%20Website/website%201.png)
    
